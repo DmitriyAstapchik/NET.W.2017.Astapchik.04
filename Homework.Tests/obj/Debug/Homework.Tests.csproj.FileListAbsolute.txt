@@ -1,0 +1,10 @@
+E:\studying\programming\EPAM training\Homework\Day 4\NET.W.2017.Astapchik.04\Homework.Tests\obj\Debug\Homework.Tests.csprojResolveAssemblyReference.cache
+E:\studying\programming\EPAM training\Homework\Day 4\NET.W.2017.Astapchik.04\Homework.Tests\obj\Debug\Homework.Tests.csproj.CoreCompileInputs.cache
+E:\studying\programming\EPAM training\Homework\Day 4\NET.W.2017.Astapchik.04\Homework.Tests\bin\Debug\Homework.Tests.dll
+E:\studying\programming\EPAM training\Homework\Day 4\NET.W.2017.Astapchik.04\Homework.Tests\bin\Debug\Homework.Tests.pdb
+E:\studying\programming\EPAM training\Homework\Day 4\NET.W.2017.Astapchik.04\Homework.Tests\bin\Debug\Homework.dll
+E:\studying\programming\EPAM training\Homework\Day 4\NET.W.2017.Astapchik.04\Homework.Tests\bin\Debug\nunit.framework.dll
+E:\studying\programming\EPAM training\Homework\Day 4\NET.W.2017.Astapchik.04\Homework.Tests\bin\Debug\Homework.pdb
+E:\studying\programming\EPAM training\Homework\Day 4\NET.W.2017.Astapchik.04\Homework.Tests\bin\Debug\nunit.framework.xml
+E:\studying\programming\EPAM training\Homework\Day 4\NET.W.2017.Astapchik.04\Homework.Tests\obj\Debug\Homework.Tests.dll
+E:\studying\programming\EPAM training\Homework\Day 4\NET.W.2017.Astapchik.04\Homework.Tests\obj\Debug\Homework.Tests.pdb

@@ -1,0 +1,6 @@
+E:\studying\programming\EPAM training\Homework\Day 4\NET.W.2017.Astapchik.04\GCD\bin\Debug\Homework.dll
+E:\studying\programming\EPAM training\Homework\Day 4\NET.W.2017.Astapchik.04\GCD\bin\Debug\Homework.pdb
+E:\studying\programming\EPAM training\Homework\Day 4\NET.W.2017.Astapchik.04\GCD\obj\Debug\Homework.csprojResolveAssemblyReference.cache
+E:\studying\programming\EPAM training\Homework\Day 4\NET.W.2017.Astapchik.04\GCD\obj\Debug\Homework.csproj.CoreCompileInputs.cache
+E:\studying\programming\EPAM training\Homework\Day 4\NET.W.2017.Astapchik.04\GCD\obj\Debug\Homework.dll
+E:\studying\programming\EPAM training\Homework\Day 4\NET.W.2017.Astapchik.04\GCD\obj\Debug\Homework.pdb
