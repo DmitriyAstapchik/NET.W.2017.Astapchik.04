@@ -14,10 +14,20 @@ namespace Homework
         /// <param name="a">first number</param>
         /// <param name="b">second number</param>
         /// <returns>GCD of two numbers</returns>
-        delegate uint GCDAlgorithm(uint a, uint b);
+        private delegate uint GCDAlgorithm(uint a, uint b);
 
         /// <summary>
-        /// Calculates GCD of any set of numbers using Euclidean algorithm and counts algorithm ticks
+        /// Calculates GCD of any set of integers using Euclidean algorithm
+        /// </summary>
+        /// <param name="numbers">input integers</param>
+        /// <returns>GCD</returns>
+        public static uint CalculateEuclideanGCD(params int[] numbers)
+        {
+            return CalculateGCD(out _, EuclideanAlgorithm, numbers);
+        }
+
+        /// <summary>
+        /// Calculates GCD of any set of integers using Euclidean algorithm and counts algorithm ticks
         /// </summary>
         /// <param name="ticks">elapsed ticks</param>
         /// <param name="numbers">input numbers</param>
@@ -25,6 +35,17 @@ namespace Homework
         public static uint CalculateEuclideanGCD(out long ticks, params int[] numbers)
         {
             return CalculateGCD(out ticks, EuclideanAlgorithm, numbers);
+        }
+
+
+        /// <summary>
+        /// Calculates GCD of any set of integers using Stein's algorithm
+        /// </summary>
+        /// <param name="numbers">input integers</param>
+        /// <returns>GCD</returns>
+        public static uint CalculateSteinsGCD(params int[] numbers)
+        {
+            return CalculateGCD(out _, SteinsAlgorithm, numbers);
         }
 
         /// <summary>
@@ -38,7 +59,15 @@ namespace Homework
             return CalculateGCD(out ticks, SteinsAlgorithm, numbers);
         }
 
-        static uint CalculateGCD(out long ticks, GCDAlgorithm algorithm, params int[] numbers)
+        /// <summary>
+        /// Calculates GCD and counts ticks using <paramref name="algorithm"/>
+        /// </summary>
+        /// <param name="ticks">elapsed ticks</param>
+        /// <param name="algorithm">gcd algorithm method</param>
+        /// <param name="numbers">input intergers</param>
+        /// <returns>GCD by <paramref name="algorithm"/></returns>
+        /// <exception cref="ArgumentException">numbers array length is less than two</exception>
+        private static uint CalculateGCD(out long ticks, GCDAlgorithm algorithm, params int[] numbers)
         {
             if (numbers.Length < 2)
             {
@@ -57,13 +86,25 @@ namespace Homework
             return gcd;
         }
 
-        static uint EuclideanAlgorithm(uint a, uint b)
+        /// <summary>
+        /// Euclidean algorithm for calculating GCD of two non-negative integers
+        /// </summary>
+        /// <param name="a">first integer</param>
+        /// <param name="b">second integer</param>
+        /// <returns>GCD of two integers</returns>
+        private static uint EuclideanAlgorithm(uint a, uint b)
         {
             if (b == 0) return a;
             return EuclideanAlgorithm(b, a % b);
         }
 
-        static uint SteinsAlgorithm(uint a, uint b)
+        /// <summary>
+        /// Stein's algorithm for calculating GCD of two non-negative integers
+        /// </summary>
+        /// <param name="a">first integer</param>
+        /// <param name="b">second integer</param>
+        /// <returns>GCD of two integers</returns>
+        private static uint SteinsAlgorithm(uint a, uint b)
         {
             if (a == b) return a;
             if (a == 0) return b;

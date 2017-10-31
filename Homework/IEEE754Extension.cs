@@ -8,11 +8,30 @@ namespace Homework
     /// </summary>
     public static class IEEE754Extension
     {
-        const char ONE = '1';
-        const char ZERO = '0';
-        const byte BASE = 2;
-        const byte EXPONENT_LENGTH = 11;
-        const byte MANTISSA_LENGTH = 52;
+        /// <summary>
+        /// character for displaying bit value 1
+        /// </summary>
+        private const char ONE = '1';
+
+        /// <summary>
+        /// character for displaying bit value 0
+        /// </summary>
+        private const char ZERO = '0';
+
+        /// <summary>
+        /// notation base of number representation
+        /// </summary>
+        private const byte BASE = 2;
+
+        /// <summary>
+        /// length of exponent in IEEE754 double representation
+        /// </summary>
+        private const byte EXPONENT_LENGTH = 11;
+
+        /// <summary>
+        /// length of mantissa in IEEE754 double representation
+        /// </summary>
+        private const byte MANTISSA_LENGTH = 52;
 
         /// <summary>
         /// Extension method that represent double-precision number in IEEE 754 format
@@ -66,14 +85,24 @@ namespace Homework
             return GetSign(ref number) + GetExponent(number) + GetMantissa(number);
         }
 
-        static string GetSign(ref double number)
+        /// <summary>
+        /// gets leftmost bit of <paramref name="number"/> as string
+        /// </summary>
+        /// <param name="number">double-precision number</param>
+        /// <returns>0 or 1</returns>
+        private static string GetSign(ref double number)
         {
             char sign = number < 0 ? ONE : ZERO;
             number = Math.Abs(number);
             return char.ToString(sign);
         }
 
-        static string GetExponent(double number)
+        /// <summary>
+        /// gets string representation of exponent of <paramref name="number"/> in IEEE754 format
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        private static string GetExponent(double number)
         {
             var binary = new StringBuilder(0, EXPONENT_LENGTH);
             var exp = Math.Floor(Math.Log(number, BASE)) + ((1 << EXPONENT_LENGTH - 1) - 1);
@@ -94,7 +123,12 @@ namespace Homework
             return binary.ToString();
         }
 
-        static string GetMantissa(double number)
+        /// <summary>
+        /// gets mantissa string representation of <paramref name="number"/> in IEEE754 format
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        private static string GetMantissa(double number)
         {
             var binary = new StringBuilder(0, MANTISSA_LENGTH + 1);
 
