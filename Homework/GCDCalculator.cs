@@ -37,7 +37,6 @@ namespace Homework
             return CalculateGCD(out ticks, EuclideanAlgorithm, numbers);
         }
 
-
         /// <summary>
         /// Calculates GCD of any set of integers using Stein's algorithm
         /// </summary>
@@ -63,8 +62,8 @@ namespace Homework
         /// Calculates GCD and counts ticks using <paramref name="algorithm"/>
         /// </summary>
         /// <param name="ticks">elapsed ticks</param>
-        /// <param name="algorithm">gcd algorithm method</param>
-        /// <param name="numbers">input intergers</param>
+        /// <param name="algorithm">GCD algorithm method</param>
+        /// <param name="numbers">input integers</param>
         /// <returns>GCD by <paramref name="algorithm"/></returns>
         /// <exception cref="ArgumentException">numbers array length is less than two</exception>
         private static uint CalculateGCD(out long ticks, GCDAlgorithm algorithm, params int[] numbers)
@@ -80,6 +79,7 @@ namespace Homework
             {
                 gcd = algorithm.Invoke(gcd, (uint)Math.Abs(numbers[i]));
             }
+
             sw.Stop();
             ticks = sw.ElapsedTicks;
 
@@ -94,7 +94,11 @@ namespace Homework
         /// <returns>GCD of two integers</returns>
         private static uint EuclideanAlgorithm(uint a, uint b)
         {
-            if (b == 0) return a;
+            if (b == 0)
+            {
+                return a;
+            }
+
             return EuclideanAlgorithm(b, a % b);
         }
 
@@ -106,16 +110,43 @@ namespace Homework
         /// <returns>GCD of two integers</returns>
         private static uint SteinsAlgorithm(uint a, uint b)
         {
-            if (a == b) return a;
-            if (a == 0) return b;
-            if (b == 0) return a;
+            if (a == b)
+            {
+                return a;
+            }
+
+            if (a == 0)
+            {
+                return b;
+            }
+
+            if (b == 0)
+            {
+                return a;
+            }
+
             if ((~a & 1) != 0)
             {
-                if ((b & 1) != 0) return SteinsAlgorithm(a >> 1, b);
-                else return SteinsAlgorithm(a >> 1, b >> 1) << 1;
+                if ((b & 1) != 0)
+                {
+                    return SteinsAlgorithm(a >> 1, b);
+                }
+                else
+                {
+                    return SteinsAlgorithm(a >> 1, b >> 1) << 1;
+                }
             }
-            if ((~b & 1) != 0) return SteinsAlgorithm(a, b >> 1);
-            if (a > b) return SteinsAlgorithm((a - b) >> 1, b);
+
+            if ((~b & 1) != 0)
+            {
+                return SteinsAlgorithm(a, b >> 1);
+            }
+
+            if (a > b)
+            {
+                return SteinsAlgorithm((a - b) >> 1, b);
+            }
+
             return SteinsAlgorithm((b - a) >> 1, a);
         }
     }

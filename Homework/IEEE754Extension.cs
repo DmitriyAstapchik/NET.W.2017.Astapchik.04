@@ -26,12 +26,12 @@ namespace Homework
         /// <summary>
         /// length of exponent in IEEE754 double representation
         /// </summary>
-        private const byte EXPONENT_LENGTH = 11;
+        private const byte EXPONENTLENGTH = 11;
 
         /// <summary>
         /// length of mantissa in IEEE754 double representation
         /// </summary>
-        private const byte MANTISSA_LENGTH = 52;
+        private const byte MANTISSALENGTH = 52;
 
         /// <summary>
         /// Extension method that represent double-precision number in IEEE 754 format
@@ -40,47 +40,45 @@ namespace Homework
         /// <returns>string representation of <paramref name="number"/></returns>
         public static string ToIEEE754String(this double number)
         {
-            #region special cases
             if (number == 0d && double.IsNegativeInfinity(1d / number))
             {
-                return ONE + new string(ZERO, EXPONENT_LENGTH) + new string(ZERO, MANTISSA_LENGTH);
+                return ONE + new string(ZERO, EXPONENTLENGTH) + new string(ZERO, MANTISSALENGTH);
             }
 
             if (number == 0d && double.IsPositiveInfinity(1d / number))
             {
-                return ZERO + new string(ZERO, EXPONENT_LENGTH) + new string(ZERO, MANTISSA_LENGTH);
+                return ZERO + new string(ZERO, EXPONENTLENGTH) + new string(ZERO, MANTISSALENGTH);
             }
 
             if (number == double.NegativeInfinity)
             {
-                return ONE + new string(ONE, EXPONENT_LENGTH) + new string(ZERO, MANTISSA_LENGTH);
+                return ONE + new string(ONE, EXPONENTLENGTH) + new string(ZERO, MANTISSALENGTH);
             }
 
             if (number == double.PositiveInfinity)
             {
-                return ZERO + new string(ONE, EXPONENT_LENGTH) + new string(ZERO, MANTISSA_LENGTH);
+                return ZERO + new string(ONE, EXPONENTLENGTH) + new string(ZERO, MANTISSALENGTH);
             }
 
             if (number == double.MinValue)
             {
-                return ONE + new string(ONE, EXPONENT_LENGTH - 1) + ZERO + new string(ONE, MANTISSA_LENGTH);
+                return ONE + new string(ONE, EXPONENTLENGTH - 1) + ZERO + new string(ONE, MANTISSALENGTH);
             }
 
             if (number == double.MaxValue)
             {
-                return ZERO + new string(ONE, EXPONENT_LENGTH - 1) + ZERO + new string(ONE, MANTISSA_LENGTH);
+                return ZERO + new string(ONE, EXPONENTLENGTH - 1) + ZERO + new string(ONE, MANTISSALENGTH);
             }
 
             if (number == double.Epsilon)
             {
-                return ZERO + new string(ZERO, EXPONENT_LENGTH) + new string(ZERO, MANTISSA_LENGTH - 1) + ONE;
+                return ZERO + new string(ZERO, EXPONENTLENGTH) + new string(ZERO, MANTISSALENGTH - 1) + ONE;
             }
 
             if (double.IsNaN(number))
             {
-                return ONE + new string(ONE, EXPONENT_LENGTH) + ONE + new string(ZERO, MANTISSA_LENGTH - 1);
+                return ONE + new string(ONE, EXPONENTLENGTH) + ONE + new string(ZERO, MANTISSALENGTH - 1);
             }
-            #endregion
 
             return GetSign(ref number) + GetExponent(number) + GetMantissa(number);
         }
@@ -104,10 +102,10 @@ namespace Homework
         /// <returns></returns>
         private static string GetExponent(double number)
         {
-            var binary = new StringBuilder(0, EXPONENT_LENGTH);
-            var exp = Math.Floor(Math.Log(number, BASE)) + ((1 << EXPONENT_LENGTH - 1) - 1);
+            var binary = new StringBuilder(0, EXPONENTLENGTH);
+            var exp = Math.Floor(Math.Log(number, BASE)) + ((1 << (EXPONENTLENGTH - 1)) - 1);
 
-            for (int i = 0, pow = EXPONENT_LENGTH - 1; i < binary.MaxCapacity; i++, pow--)
+            for (int i = 0, pow = EXPONENTLENGTH - 1; i < binary.MaxCapacity; i++, pow--)
             {
                 if (Math.Pow(BASE, pow) <= exp)
                 {
@@ -130,7 +128,7 @@ namespace Homework
         /// <returns></returns>
         private static string GetMantissa(double number)
         {
-            var binary = new StringBuilder(0, MANTISSA_LENGTH + 1);
+            var binary = new StringBuilder(0, MANTISSALENGTH + 1);
 
             for (int i = 0, pow = (int)Math.Floor(Math.Log(number, BASE)); i < binary.MaxCapacity; i++, pow--)
             {
