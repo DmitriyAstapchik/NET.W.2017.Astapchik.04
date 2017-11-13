@@ -9,14 +9,6 @@ namespace Homework
     public static class GCDCalculator
     {
         /// <summary>
-        /// Delegate represents an algorithm for calculating GCD of two non-negative numbers
-        /// </summary>
-        /// <param name="a">first number</param>
-        /// <param name="b">second number</param>
-        /// <returns>GCD of two numbers</returns>
-        private delegate uint GCDAlgorithm(uint a, uint b);
-
-        /// <summary>
         /// Calculates GCD of any set of integers using Euclidean algorithm
         /// </summary>
         /// <param name="numbers">input integers</param>
@@ -66,7 +58,7 @@ namespace Homework
         /// <param name="numbers">input integers</param>
         /// <returns>GCD by <paramref name="algorithm"/></returns>
         /// <exception cref="ArgumentException">numbers array length is less than two</exception>
-        private static uint CalculateGCD(out long ticks, GCDAlgorithm algorithm, params int[] numbers)
+        private static uint CalculateGCD(out long ticks, Func<uint, uint, uint> algorithm, params int[] numbers)
         {
             if (numbers.Length < 2)
             {
